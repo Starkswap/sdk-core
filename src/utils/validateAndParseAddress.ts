@@ -9,7 +9,7 @@ export function validateAndParseAddress(address: string): string {
     let checksummedAddress = getChecksumAddress(address)
     if (validateChecksumAddress(checksummedAddress)) {
       return checksummedAddress
-    } else throw new Error();
+    } else throw new Error()
   } catch (e) {
     throw new Error(`${address} is not a valid address.`)
   }
