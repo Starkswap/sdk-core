@@ -1,12 +1,11 @@
 import JSBI from 'jsbi'
 import { MaxUint256 } from '../../constants'
-import { Ether } from '../ether'
 import { Token } from '../token'
 import { CurrencyAmount } from './currencyAmount'
 import { Percent } from './percent'
 
 describe('CurrencyAmount', () => {
-  const ADDRESS_ONE = '0x0000000000000000000000000000000000000001'
+  const ADDRESS_ONE = '0x0000000000000000000000000000000000000000000000000000000000000001'
 
   describe('constructor', () => {
     it('works', () => {
@@ -21,14 +20,6 @@ describe('CurrencyAmount', () => {
       const token = new Token(1, ADDRESS_ONE, 18)
       const amount = CurrencyAmount.fromRawAmount(token, 100).multiply(new Percent(15, 100))
       expect(amount.quotient).toEqual(JSBI.BigInt(15))
-    })
-  })
-
-  describe('#ether', () => {
-    it('produces ether amount', () => {
-      const amount = CurrencyAmount.fromRawAmount(Ether.onChain(1), 100)
-      expect(amount.quotient).toEqual(JSBI.BigInt(100))
-      expect(amount.currency).toEqual(Ether.onChain(1))
     })
   })
 
